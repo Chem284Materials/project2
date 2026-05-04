@@ -35,5 +35,44 @@ Describe some ways in which your neural network implementation would need to cha
 
 Your response to this task should be fairly extensive (>1,000 words).
 
+## Collecting Roofline Data on Perlmutter
+
+For the purpose of collecting data for the roofline plots, you can reference the following Perlmutter submission script.
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=neuralnet_roofline
+#SBATCH --account=<insert_account_name>
+#SBATCH --constraint=gpu
+#SBATCH --qos=shared
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --gpus=1
+#SBATCH --cpus-per-task=32
+#SBATCH --time=00:30:00
+#SBATCH --output=neuralnet_roofline_%j.out
+#SBATCH --error=neuralnet_roofline_%j.err
+
+module load python
+module load cudatoolkit
+
+# Activate conda environment with PyCUDA
+# You'll need to have previously created the environment with something like:
+# conda create -n pycudaenv python=3.11 pip numpy pycuda
+conda activate pycudaenv
+
+srun --ntasks-per-node=1 dcgmi profile --pause
+ncu \
+    --set roofline \
+    --section SpeedOfLight_RooflineChart \
+    --launch-skip 0 \
+    --launch-count 20 \
+    --target-processes all \
+    --force-overwrite \
+    -o roofline_neuralnet \
+    python neuralnet.py
+srun --ntasks-per-node=1 dcgmi profile --resume
+```
+
 ## Answers
 
