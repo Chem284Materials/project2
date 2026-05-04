@@ -74,5 +74,12 @@ ncu \
 srun --ntasks-per-node=1 dcgmi profile --resume
 ```
 
+Note that this script uses `--launch-count` to restrict the number of kernel launches that are profiled.
+You may need to make adjustments to this and other options in order to adapt the script to your code.
+
+If the script runs successfully, it should produce a file called `roofline_neuralnet.ncu-rep`.
+You can then generate the roofline plot by running, for example, `ncu-ui roofline_neuralnet.ncu-rep`.
+Note that by default, running GUI applications on Perlmutter won't work; you can instead copy the file to your local machine before running `ncu-ui`.
+
 ## Answers
 
