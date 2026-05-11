@@ -20,7 +20,7 @@ Include your data and plots here, and explain your conclusions regarding the pro
 
 Note that the Morse potential problem is too small to effectively utilize Perlmutter's resources.
 Modify your code to solve a more physically complex problem that can better utilize the Perlmutter GPUs.
-For example, what if instead of trying to learn a Morse potential for a two-body system, you tried to learn a potential energy surface for a three-body or four-body system?
+For example, what if instead of trying to learn a Morse potential for a two-body system, you tried to learn a potential energy surface for a larger chemical system?
 You may select a physical problem unrelated to molecular dynamics, if you prefer.
 Provide this code **in addition** to the code for Tasks 1 and 2; in other words, submit code that solves the new problem as well as code that discovers the Morse potential.
 
