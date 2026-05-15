@@ -9,6 +9,7 @@ Use the skills and knowledge you've gained over the course of this semester to m
 
 The code currently runs on the CPU.
 Rewrite it to run on GPUs, making an effort optimize for efficiency.
+Do not use CuPy, PyTorch, or similar high-level packages for GPU acceleration - you should write custom CUDA kernels for the calculation.
 
 ## Task 2 - Profile the Code
 
